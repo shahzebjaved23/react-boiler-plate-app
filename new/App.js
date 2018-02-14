@@ -11,7 +11,7 @@ class Main extends Component{
 
 	render(){
 		return(
-			<div className="container">hello </div>
+			<div className="container">hello world</div>
 		);
 	}
 }
