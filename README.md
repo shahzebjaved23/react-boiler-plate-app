@@ -1,4 +1,4 @@
-**React boiler plate app
+React boiler plate app
 
 Depends on webpack and nodemon to be installed globally
 
