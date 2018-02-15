@@ -9,24 +9,22 @@ import { Footer } from "./components/footer/Footer";
 import { About } from "./components/about/About";
 import { Main } from "./components/main/Main";
 
-// class App extends Component{
+class App extends Component{
 	
-//     constructor(){
-// 		super();		
-// 	}
+    constructor(){
+		super();		
+	}
 
-// 	render(){
-// 		return(
-            
-// 		);
-// 	}
-// }
-
-
-
-ReactDOM.render( (<HashRouter>
+	render(){
+		return(
+            <HashRouter>
                 <div>
-                    <Route path="/" component={Main} />
+                    <Route exact path="/" component={Main} />
                     <Route path="/about" component={About} />
                 </div>
-            </HashRouter>),  document.getElementById('root'));
+            </HashRouter>
+		);
+	}
+}
+
+ReactDOM.render( <App />,  document.getElementById('root'));
