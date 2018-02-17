@@ -1,4 +1,4 @@
-export default initialState = {
+export const initialState = {
 	users: [
 		{
 			firstName: "John",

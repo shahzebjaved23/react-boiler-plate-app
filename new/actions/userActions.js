@@ -1,4 +1,1 @@
-export GET_USERS = {
-	type: "GET_USERS",
-	payload: ""
-}
+export const GET_USERS = { type: "GET_USERS" }

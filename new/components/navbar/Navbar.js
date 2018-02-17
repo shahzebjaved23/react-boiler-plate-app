@@ -14,7 +14,10 @@ export class AppNavbar extends Component{
 					</Navbar.Header>
 					<Nav>
 						<li>
-							<Link style={{ height: "" }} to="about">About</Link>
+							<Link to="/about">About</Link>
+						</li>
+						<li>
+							<Link to="/users">Users</Link>
 						</li>
 						<NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
 							<MenuItem eventKey={3.1}>Action</MenuItem>

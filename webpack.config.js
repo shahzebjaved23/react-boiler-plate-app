@@ -10,14 +10,20 @@ const config = {
 	},
 	module: {
  		loaders: [
-    		{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				query: {
-                    presets: ['es2015','react']
-				}
-			}
- 
+    		
+			{
+		        test: /\.js$/, // Support decorators for fontkit module
+		        loader: 'babel-loader',
+		        query:
+		        {
+		          plugins:
+		          [
+		            "transform-class-properties",
+  					"transform-decorators-legacy"
+		          ],
+		          presets: ['es2015', 'react'],
+		        }
+		      },
 		]
 	},
 	plugins: [

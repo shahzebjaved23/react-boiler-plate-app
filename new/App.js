@@ -8,51 +8,29 @@ import { Header } from "./components/header/Header";
 import { Footer } from "./components/footer/Footer";
 import { About } from "./components/about/About";
 import { Main } from "./components/main/Main";
-import { createStore } from "redux";
-import { _ } from "lodash";
 
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
-const initialState = { count: 0 };
-
-const userReducer = function(state=initialState, action){
-	switch (action.type) {
-		case "INC": {
-			let newState = Object.assign({} , state);
-			return {count: newState.count + 1}
-		}
-		default: {
-			return state;
-		}
-	}
-}
-
-const store = createStore(userReducer, initialState);
+import { Users } from "./components/users/Users";
 
 class App extends Component{
 	
     constructor(){
 		super();
-
-		store.subscribe((s)=>{
-			console.log("state in subscribe", store.getState());
-		})
-
-		store.dispatch({type: "INC"})		
-		store.dispatch({type: "INC"})		
-		
-		store.dispatch({type: "INC"})		
-		store.dispatch({type: "INC"})		
-
 	}
 
 	render(){
 		return(
-            <HashRouter>
-                <div>
-                    <Route exact path="/" component={Main} />
-                    <Route path="/about" component={About} />
-                </div>
-            </HashRouter>
+			<Provider store={store}>	
+	            <HashRouter>
+	                <div>
+	                    <Route exact path="/" component={Main} />
+	                    <Route path="/about" component={About} />
+						<Route path="/users" component={Users} />
+	                </div>
+	            </HashRouter>
+	        </Provider>
 		);
 	}
 }

@@ -1,6 +1,7 @@
 import { GET_USERS } from "../actions/userActions";
+import { initialState } from "../store/state";
 
-export userReducer = (state, action) => {
+export const usersReducer = (state=initialState, action) => {
 	switch(action.type){
 		case GET_USERS.type : {
 			let newState = Object.assign({}, state)
@@ -11,4 +12,5 @@ export userReducer = (state, action) => {
 			return state
 		}
 	}
+	return state
 }
