@@ -1,21 +1,21 @@
 var webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
-	entry: './new/App.js',
+	context: path.resolve(__dirname, 'new'),
+	entry: './App.js',
 	output:{
-		path: path.resolve(__dirname ,'bin/'),
-		publicPath: '/bin/',
-		filename:'bundle.js'
+		path: "./bin/bundle.js"
 	},
-
+	devtool: 'source-map',
 	module: {
         rules: [
         	{
 		        test: /\.js$/, 
 		        loader: 'babel-loader',
-		        query: {
+                exclude: /node_modules/,
+		        options: {
 		        	plugins: [
 						"transform-class-properties",
 						"transform-decorators-legacy"
@@ -25,21 +25,26 @@ const config = {
 		    },	
         	{
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract('css!scss'), 
-          	}
+                use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+                        use: [
+                            {
+                                loader: "css-loader" // translates CSS into CommonJS
+                            },
+                            {
+                                loader: "sass-loader" // compiles Sass to CSS
+                            }
+                        ],
+                        fallback: "style-loader" // used when css not extracted
+                    }
+                ))
+            },
         ]
     },
 
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin('stye.css', {
-            allChunks: true
-        })
-	],
-
-	resolve : { 
-		extensions: [ '.js' ,'.scss' ,'.json'] 
-	}
+        new ExtractTextPlugin({filename: 'styles.css', allChunks: true})
+	]
 
 }
 
