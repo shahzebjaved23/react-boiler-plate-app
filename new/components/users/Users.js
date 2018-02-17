@@ -23,7 +23,7 @@ export class Users extends Component{
 		return(
 			<Layout>
 				<h4>users</h4>
-				<div ref="users">
+				<div className="users" ref="users">
 					{this.props.users.map((user)=>{
 						return <span>{user.firstName} {user.lastName}</span>
 					})}

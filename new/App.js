@@ -1,5 +1,3 @@
-'use strict'
-
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Router, HashRouter } from 'react-router-dom';
@@ -31,7 +29,7 @@ class App extends Component{
 	                </div>
 	            </HashRouter>
 	        </Provider>
-		);
+		)
 	}
 }
 
