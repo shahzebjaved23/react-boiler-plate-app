@@ -13,3 +13,7 @@ In the terminal run following
 In separate terminal
 
 - nodemon server.js
+
+For production build run
+
+- npm run build
