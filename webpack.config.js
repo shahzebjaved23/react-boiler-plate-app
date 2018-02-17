@@ -6,7 +6,8 @@ const config = {
 	context: path.resolve(__dirname, 'new'),
 	entry: './App.js',
 	output:{
-		path: "./bin/bundle.js"
+		path: path.resolve(__dirname, 'bin'),
+		filename: "bundle.js"
 	},
 	devtool: 'source-map',
 	module: {
