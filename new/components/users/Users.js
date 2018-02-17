@@ -3,6 +3,7 @@ import { store } from "../../store/store";
 import { GET_USERS } from "../../actions/userActions";
 import { Layout } from "../layout/Layout";
 import { connect } from "react-redux";
+import './Users.scss';
 
 @connect((store)=>{
 	return {

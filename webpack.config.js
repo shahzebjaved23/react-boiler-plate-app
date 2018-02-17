@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 const path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
 	entry: './new/App.js',
@@ -11,7 +11,7 @@ const config = {
 	},
 
 	module: {
-        loaders: [
+        rules: [
         	{
 		        test: /\.js$/, 
 		        loader: 'babel-loader',
@@ -25,18 +25,23 @@ const config = {
 		    },	
         	{
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('css!sass'), 
+                use: ExtractTextPlugin.extract('css!scss'), 
           	}
         ]
     },
 
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin('/fuck.css', {
+		new ExtractTextPlugin('stye.css', {
             allChunks: true
         })
-	]
+	],
+
+	resolve : { 
+		extensions: [ '.js' ,'.scss' ,'.json'] 
+	}
 
 }
+
 
 module.exports = config;
